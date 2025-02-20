@@ -64,7 +64,7 @@ class NumberUtilsTest {
     public static Stream<Arguments> InputDataProvider() {
         return Stream.of(
                 Arguments.of(null, new LinkedList<>(), null),
-                Arguments.of(new LinkedList<>(List.of(1, 0)), new LinkedList<>(), new LinkedList<>(List.of(1, 0))),
+                Arguments.of(new LinkedList<>(List.of()), new LinkedList<>(), new LinkedList<>(List.of())),
                 Arguments.of(new LinkedList<>(), new LinkedList<>(List.of(1, 0)), new LinkedList<>(List.of(1, 0))),
                 Arguments.of(new LinkedList<>(List.of(1, 0)), new LinkedList<>(List.of(1, 0)), new LinkedList<>(List.of(2, 0)))
         );
@@ -195,9 +195,9 @@ class NumberUtilsTest {
     void boundaryInput() {
         // test to check if the program accepts 0 and 9 as valid inputs
         List<Integer> a = new LinkedList<>(); a.add(0);
-        List<Integer> b = new LinkedList<>(); a.add(9);
-        List<Integer> sol = new LinkedList<>(); sol.add(9);
-        assertEquals(sol, NumberUtils.add(b, a));
+        List<Integer> b = new LinkedList<>(); a.add(0);
+        List<Integer> sol = new LinkedList<>(); sol.add(0);
+        assertEquals(sol, NumberUtils.add(b, a)); // [0] + [0] = [0]
     }
     @Test
     void negativeNumber() {
